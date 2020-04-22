@@ -16,10 +16,12 @@ import com.bigtree.fx.model.BusinessTransaction;
 import com.bigtree.fx.model.TransactionType;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Component
 public class BusinessTransactionCSVReader {
 
     public List<BusinessTransaction> getTransactions(String file) {

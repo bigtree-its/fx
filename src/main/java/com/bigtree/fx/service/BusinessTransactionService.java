@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.time.Month;
 import java.util.List;
 
+import com.bigtree.fx.jpa.BizTrxRepository;
 import com.bigtree.fx.model.BusinessTransaction;
 import com.bigtree.fx.utils.BusinessTransactionCSVReader;
 
@@ -20,6 +21,9 @@ public class BusinessTransactionService {
 
     @Autowired
     BusinessTransactionCSVReader businessTransactionCSVReader;
+
+    @Autowired
+    BizTrxRepository repository;
 
     public List<BusinessTransaction> getTransactions(final Month month) {
         log.debug("Getting transactions for month {}", month.name());
