@@ -1,0 +1,4 @@
+mysql database: fxmysql
+mysql userL: fxmysqluser
+mysql user password: fxmysqlpassword
+mysql root user/pw: root/fxmysqlrootpassword

@@ -1,8 +1,33 @@
 version: '3.4'
-
 services:
-  fx:
-    image: fx
+  fx-app:
+    depends_on: 
+      - fx-mysql
+    image: fx-app:latest
     build: .
     ports:
-      - 8080
+      - 8080:8080
+    environment: 
+      - MYSQL_HOST=fx-mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=fxmysql
+      - MYSQL_USER=fxmysqluser
+      - MYSQL_PASSWORD=fxmysqlpassword
+
+  fx-mysql:
+    image: mysql/mysql-server:latest
+    restart: always
+    environment: 
+      - MYSQL_ROOT_PASSWORD=fxmysqlrootpassword
+      - MYSQL_DATABASE=fxmysql
+      - MYSQL_USER=fxmysqluser
+      - MYSQL_PASSWORD=fxmysqlpassword
+    ports: 
+      - 3306:3306
+    volumes: 
+      - ./data/mysql:/var/lib/mysql
+
+
+# volumes: 
+#   fx-mysql-vol: 
+#     external: true
